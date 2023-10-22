@@ -5,11 +5,14 @@
       <div class="post__item"><strong>Post id:</strong> {{ post.id }}</div>
       <div class="post__item"><strong>Article name:</strong> <br>{{ post.title }}</div>
       <div><strong>Article description:</strong> <br>{{ post.body }}</div>
+      <div><strong>Likes quantity:</strong> {{ $store.state.likes }}</div>
     </div>
 
     <div class="post__btns">
-      <my-button @click="$router.push(`/posts/${post.id}`)" style="margin-bottom: 10px;">Open</my-button>
+      <my-button @click="$router.push(`/posts/${post.id}`)">Open</my-button>
       <my-button @click="$emit('remove', post)">Delete</my-button>
+      <my-button @click="$store.commit('incrementLikes')">Like</my-button>
+      <my-button @click="$store.commit('decrimentLikes')">Dislike</my-button>
     </div>
     
   </div>
@@ -45,6 +48,7 @@ export default {
   margin-left: 20px;
   display: flex;
   flex-direction: column;
+  gap: 10px;
 }
 
 
